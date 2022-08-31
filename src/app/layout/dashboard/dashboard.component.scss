@@ -1,0 +1,27 @@
+@import "../../../assets/system/colors/colors";
+
+.back-button {
+  z-index: 100;
+  width: 53px;
+  height: 53px;
+  position: absolute;
+  left: 70px;
+  top: 53px;
+  border-radius: 50%;
+  border: none;
+  background: $back-button-bg;
+}
+
+.router-wrapper {
+  width: 1226px;
+}
+
+.dash-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $main-bg;
+  position: relative;
+}

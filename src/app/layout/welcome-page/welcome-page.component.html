@@ -1,0 +1,24 @@
+<div class="welcom-page-container">
+  <img class="redberry-logo" src="../../../assets/icons/redberry.svg" alt="" />
+  <img class="welcom-page-image" src="../../../assets/icons/PCfy.svg" alt="" />
+  <img
+    class="welcom-page-image-s"
+    src="../../../assets/icons/PCfy-s.svg"
+    alt=""
+  />
+
+  <button
+    (click)="route.navigate(['/homePage/registration-form'])"
+    class="btn btn-primary welcom-page-button"
+  >
+    <!-- ᲩᲐᲜᲐᲬᲔᲠᲘᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ -->
+    ჩანაწერის დამატება
+  </button>
+  <button
+    (click)="route.navigate(['/homePage/list'])"
+    type="submit"
+    class="btn btn-primary welcom-page-button welcom-page-button-2"
+  >
+    ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ
+  </button>
+</div>
