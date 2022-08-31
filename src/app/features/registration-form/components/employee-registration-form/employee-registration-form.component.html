@@ -1,0 +1,147 @@
+<form
+  [formGroup]="employeeForm"
+  class="needs-validation employee-registration-form"
+  (submit)="onSubmit($event)"
+>
+  <div class="row">
+    <div class="form-group form-group-reverse col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        id="inputName"
+        placeholder="გრიშა"
+        formControlName="name"
+      />
+      <label for="inputName">სახელი</label>
+      <div
+        class="invalid-feedback feedback"
+        *ngIf="
+          !name.errors ||
+            name.hasError('required') ||
+            (name.hasError('minlength') && name.hasError('pattern'));
+          else specificWarning
+        "
+      >
+        მინიმუმ 2 სიმბოლო, ქართული ასოები
+      </div>
+      <ng-template #specificWarning>
+        <div
+          class="invalid-feedback feedback"
+          *ngIf="name.hasError('minlength')"
+        >
+          გამოიყენე მინიმუმ 2 სიმბოლო
+        </div>
+        <div class="invalid-feedback feedback" *ngIf="name.hasError('pattern')">
+          გამოიყენე ქართული ასოები
+        </div>
+      </ng-template>
+    </div>
+    <div class="form-group form-group-reverse col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        id="inputSurname"
+        placeholder="ბაგრატიონი"
+        formControlName="surname"
+      />
+      <label for="inputSurname">გვარი</label>
+      <div
+        class="invalid-feedback feedback"
+        *ngIf="
+          !surname.errors ||
+            surname.hasError('required') ||
+            (surname.hasError('minlength') && surname.hasError('pattern'));
+          else specificWarningSurname
+        "
+      >
+        მინიმუმ 2 სიმბოლო, ქართული ასოები
+      </div>
+      <ng-template #specificWarningSurname>
+        <div
+          class="invalid-feedback feedback"
+          *ngIf="surname.hasError('minlength')"
+        >
+          გამოიყენე მინიმუმ 2 სიმბოლო
+        </div>
+        <div
+          class="invalid-feedback feedback"
+          *ngIf="surname.hasError('pattern')"
+        >
+          გამოიყენე ქართული ასოები
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group form-group-reverse">
+      <mat-form-field class="custom-select-wrap">
+        <mat-select
+          class="custom-select"
+          panelClass="custom-select-panel"
+          formControlName="team_id"
+          placeholder="თიმი"
+          disableOptionCentering
+        >
+          <mat-option *ngFor="let team of teams" [value]="team.id">
+            {{ team.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group form-group-reverse">
+      <mat-form-field class="custom-select-wrap">
+        <mat-select
+          class="custom-select"
+          formControlName="position_id"
+          disableOptionCentering
+          placeholder="პოზიცია"
+          panelClass="custom-select-panel"
+        >
+          <mat-option
+            *ngFor="let position of filtered_positions"
+            [value]="position.id"
+          >
+            {{ position.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group form-group-reverse">
+      <input
+        type="text"
+        class="form-control"
+        id="inputMail"
+        placeholder="grish666@redberry.ge"
+        formControlName="email"
+      />
+      <label for="inputMail">მეილი</label>
+      <div class="invalid-feedback feedback">
+        უნდა მთავრდებოდეს @redberry.ge-ით
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group form-group-reverse">
+      <input
+        type="tel"
+        class="form-control"
+        id="inputMobile"
+        placeholder="+995 598 00 07 01"
+        formControlName="phone_number"
+      />
+      <label for="inputMobile">ტელეფონის ნომერი</label>
+      <div class="invalid-feedback feedback">
+        უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary submit-btn">შემდეგი</button>
+</form>

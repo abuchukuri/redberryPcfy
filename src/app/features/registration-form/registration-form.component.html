@@ -1,0 +1,26 @@
+<div class="registration-form-wrap">
+  <div class="stepper">
+    <a
+      class="step-trigger employee-trigger"
+      [routerLink]="['employee']"
+      routerLinkActive="active"
+      >თანამშრომლის ინფო</a
+    >
+    <a
+      class="step-trigger pc-trigger"
+      [routerLink]="['pc']"
+      routerLinkActive="active"
+      >ლეპტოპის მახასიათებლები</a
+    >
+  </div>
+
+  <div class="form-container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <img
+    class="redberry-logo"
+    src="../../../assets/icons/redberry-logo.svg"
+    alt=""
+  />
+</div>

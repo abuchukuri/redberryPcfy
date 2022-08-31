@@ -1,0 +1,204 @@
+<form
+  [formGroup]="laptopForm"
+  (submit)="onSubmit($event)"
+  class="needs-validation"
+>
+  <div class="row">
+    <div
+      class="file-upload-wrap"
+      appFileUploadDrag
+      (fileDropped)="FileDropped($event, fileUploader)"
+    >
+      <label class="file-upload-lable" for="laptop_image"
+        >ჩააგდე ან ატვირთე ლეპტოპის ფოტო</label
+      >
+      <input
+        #fileUploader
+        type="file"
+        class="file-upload-input"
+        formControlName="laptop_image"
+        id="laptop_image"
+      />
+      <img src="" alt="" />
+      <button type="button" class="btn btn-primary file-upload-button">
+        ატვირთე
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group form-group-reverse col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        id="laptop_name"
+        placeholder="HP"
+        formControlName="laptop_name"
+      />
+      <label for="laptop_name">ლეპტოპის სახელი </label>
+      <div class="invalid-feedback feedback">
+        ლათინური ასოები, ციფრები, !@#$%^&*()_+=
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <mat-form-field class="custom-select-wrap">
+        <mat-select
+          formControlName="laptop_brand_id"
+          disableOptionCentering
+          placeholder="ლეპტოპის ბრენდი"
+          panelClass="custom-select-panel"
+        >
+          <mat-option *ngFor="let brand of brands" [value]="brand.id">
+            {{ brand.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="form-group col-md-4">
+      <mat-form-field class="custom-select-wrap">
+        <mat-select
+          formControlName="laptop_cpu"
+          disableOptionCentering
+          placeholder="CPU"
+          panelClass="custom-select-panel"
+        >
+          <mat-option *ngFor="let cpu of CPUs" [value]="cpu.id">
+            {{ cpu.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group form-group-reverse col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        id="laptop_cpu_cores"
+        formControlName="laptop_cpu_cores"
+        placeholder="14"
+      />
+      <label for="laptop_cpu_cores">CPU-ს ბირთვი</label>
+      <div class="invalid-feedback feedback">მხოლოდ ციფრები</div>
+    </div>
+
+    <div class="form-group form-group-reverse col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        id="laptop_cpu_threads"
+        placeholder="365"
+        formControlName="laptop_cpu_threads"
+      />
+      <label for="laptop_cpu_threads">CPU-ს ნაკადი</label>
+      <div class="invalid-feedback feedback">მხოლოდ ციფრები</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group form-group-reverse col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        id="laptop_ram"
+        formControlName="laptop_ram"
+        placeholder="16"
+        required
+      />
+      <label for="laptop_ram">ლეპტოპის RAM (GB)</label>
+      <div class="invalid-feedback feedback">მხოლოდ ციფრები</div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label>მეხსიერების ტიპი</label>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="laptop_hard_drive_type"
+          id="laptop_hard_drive_type_1"
+          formControlName="laptop_hard_drive_type"
+          value="CCD"
+        />
+        <label class="form-check-label" for="laptop_hard_drive_type_1">
+          CCD
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="laptop_hard_drive_type"
+          id="laptop_hard_drive_type_2"
+          formControlName="laptop_hard_drive_type"
+          value="HDD"
+        />
+        <label class="form-check-label" for="laptop_hard_drive_type_2">
+          HDD
+        </label>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="form-group form-group-reverse col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        id="laptop_purchase_date"
+        formControlName="laptop_purchase_date"
+        placeholder="დდ / თთ / წწწწ"
+      />
+      <label for="laptop_purchase_date">შეძენის რიცხვი (არჩევითი)</label>
+    </div>
+    <!-- @TODO currency-->
+    <div class="form-group form-group-reverse col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        id="laptop_price"
+        placeholder="0000"
+        formControlName="laptop_price"
+      />
+      <label for="laptop_price">ლეპტოპის ფასი</label>
+      <div class="invalid-feedback feedback">მხოლოდ ციფრები</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label>ლეპტოპის მდგომარეობა</label>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="laptop_state"
+          id="laptop_state_1"
+          formControlName="laptop_state"
+          value="new"
+        />
+        <label class="form-check-label" for="laptop_state_1"> ახალი </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="laptop_state"
+          id="laptop_state_2"
+          formControlName="laptop_state"
+          value="old"
+        />
+        <label class="form-check-label" for="laptop_state_2"> მეორადი </label>
+      </div>
+    </div>
+  </div>
+
+  <a [routerLink]="['../employee']">უკან</a>
+  <button type="submit" class="btn btn-primary">დამახსოვრება</button>
+</form>
