@@ -1,1 +1,257 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pcfy-primary: mat.define-palette(mat.$indigo-palette);
+$pcfy-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pcfy-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pcfy-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $pcfy-primary,
+      accent: $pcfy-accent,
+      warn: $pcfy-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($pcfy-theme);
+
+@import "/src/assets/system/colors/_colors.scss";
+@import "/src/assets/system/fonts/_fonts.scss";
 /* You can add global styles to this file, and also import other style files */
+:root {
+  font-family: "HelveticaNeue";
+  // @TODO
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    width: 0;
+
+    background-color: transparent;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "HelveticaNeue", sans-serif;
+  background-color: red;
+}
+
+/* bootstrap.min.css */
+.btn-primary {
+  background-color: $btn-blue-light;
+  border-color: $btn-blue-light;
+  height: 60px;
+}
+
+.btn-primary:hover {
+  background-color: $btn-blue-regular;
+  border-color: $btn-blue-regular;
+}
+
+.btn-primary:focus {
+  background-color: $btn-blue-dark;
+  border-color: $btn-blue-dark;
+}
+
+input:active:focus,
+input:focus,
+.btn-primary:active:focus,
+.btn-primary:focus,
+select:active:focus,
+select:focus {
+  box-shadow: none !important;
+  -webkit-box-shadow: none;
+}
+
+label {
+  height: 21px;
+  margin-bottom: 8px;
+}
+
+:is(.form-control, .custom-select-wrap).ng-invalid.ng-dirty {
+  & ~ label,
+  & ~ .invalid-feedback {
+    color: $input-invalid;
+  }
+  border-color: $input-invalid;
+  background-image: none;
+}
+
+.ng-submitted.ng-invalid {
+  .form-control.ng-invalid,
+  .custom-select-wrap.ng-invalid {
+    & ~ label,
+    & ~ .invalid-feedback {
+      color: $input-invalid;
+    }
+    border-color: $input-invalid;
+    background-image: none;
+  }
+}
+
+input.form-control {
+  height: 60px;
+  color: $black;
+  border: 1.8px solid $blue-400;
+  border-radius: 8px;
+  background-color: unset;
+  padding-left: 14px;
+  &:focus {
+    background: rgba(43, 75, 242, 0.06);
+    border-color: #6499ff;
+  }
+  &::placeholder {
+    color: $light-gray;
+  }
+  &:disabled {
+    border-color: $input-disabled-br;
+    background-color: unset;
+    color: $light-gray;
+  }
+}
+
+.form-check-input,
+.form-check-input:focus,
+.form-check-input:active,
+.form-check-input:checked {
+  outline: 2px solid $radio-default;
+  outline-offset: 2px;
+  border: none;
+  width: 12px;
+  height: 12px;
+  &.form-check-input:checked {
+    background-image: none;
+    background-color: $radio-default;
+  }
+}
+
+//@TODO
+.form-group-reverse {
+  label {
+    order: 0;
+  }
+  input {
+    order: 1;
+  }
+  & .invalid-feedback {
+    order: 2;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback {
+  color: black;
+  display: block;
+  margin-top: 8px;
+}
+
+.custom-select-wrap {
+  height: 60px;
+  width: 100%;
+  background: $select-bg;
+  border-radius: 8px;
+  border: 2px solid $select-bg;
+  &.mat-form-field-hide-placeholder .mat-select-placeholder {
+    color: black;
+    -webkit-text-fill-color: black;
+  }
+  &.mat-focused.mat-form-field-hide-placeholder .mat-select-placeholder {
+    color: black;
+    -webkit-text-fill-color: black;
+  }
+  .mat-select-trigger {
+    padding: 0 16px;
+  }
+  .mat-select-value {
+    font-size: 20px;
+  }
+  .mat-select-arrow {
+    border: none;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-image: url("./assets/icons/check.svg");
+    margin: 0 4px;
+    background-repeat: no-repeat;
+  }
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-form-field-label {
+    display: none !important;
+  }
+}
+
+.custom-select-panel.mat-select-panel {
+  margin-left: 18px;
+  width: calc(100% - 3px);
+  max-width: unset;
+  min-width: unset !important;
+  margin-top: 39px;
+  background-color: white;
+  filter: drop-shadow(0px 4px 34px rgba(0, 0, 0, 0.25));
+  border-radius: 8px;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  .mat-optgroup-label,
+  .mat-option {
+    height: 41px;
+  }
+  .mat-option:is(.mat-active, :hover:not(.mat-option-disabled), :focus:not(.mat-option-disabled)) {
+    background: #e7f0f8;
+    color: black;
+  }
+  .mat-option:is(.mat-selected:not(.mat-option-disabled)) {
+    background: white;
+    color: black;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $btn-blue-light;
+}
+
+.col-md-6 {
+  width: 48%;
+}
+
+.row {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 51.2px;
+}

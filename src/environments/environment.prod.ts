@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  pcfyApi: 'https://pcfy.redberryinternship.ge/api',
 };
