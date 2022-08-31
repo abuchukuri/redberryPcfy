@@ -1,0 +1,23 @@
+@import "../../../../../assets/system/colors/colors";
+.pc-item-container {
+  width: 563px;
+  height: 205px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  background-color: $blue-300;
+  border: 1px solid #aed1ea;
+  border-radius: 20px;
+  .pc-image {
+    width: 266px;
+    border-radius: 10px;
+  }
+  .pc-information {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
