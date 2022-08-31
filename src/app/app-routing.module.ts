@@ -1,10 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { WelcomePageComponent } from './layout/welcome-page/welcome-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: WelcomePageComponent, pathMatch: 'full' },
+  {
+    path: 'homePage',
+    component: DashboardComponent,
+    children: [
+      { path: '', redirectTo: 'registration-form', pathMatch: 'full' },
+      {
+        path: 'registration-form',
+        loadChildren: () =>
+          import(
+            '../app/features/registration-form/registration-form.module'
+          ).then((m) => m.RegistrationFormModule),
+      },
+      {
+        path: 'list',
+        loadChildren: () =>
+          import('../app/features/pc-list/pc-list.module').then(
+            (m) => m.PcListModule
+          ),
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
