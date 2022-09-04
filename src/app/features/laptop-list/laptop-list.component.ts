@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { LaptopsService } from '../../services/laptops/laptops.service';
 
 @Component({
-  selector: 'app-pc-list',
-  templateUrl: './pc-list.component.html',
-  styleUrls: ['./pc-list.component.scss'],
+  selector: 'app-laptop-list',
+  templateUrl: './laptop-list.component.html',
+  styleUrls: ['./laptop-list.component.scss'],
 })
-export class PcListComponent implements OnInit {
+export class LaptopListComponent implements OnInit {
   laptops: any[] = [];
   constructor(LaptopsService: LaptopsService) {
     LaptopsService.getLaptopList().subscribe((laptops) => {

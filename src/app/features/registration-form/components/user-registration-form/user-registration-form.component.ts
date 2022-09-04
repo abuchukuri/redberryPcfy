@@ -1,4 +1,9 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -8,52 +13,47 @@ import { FormGeneralHelperService } from '../../services/form-general-helper/for
 import { FormStateManagerService } from '../../services/form-state-manager/form-state-manager.service';
 
 @Component({
-  selector: 'app-employee-registration-form',
-  templateUrl: './employee-registration-form.component.html',
-  styleUrls: ['./employee-registration-form.component.scss'],
+  selector: 'app-user-registration-form',
+  templateUrl: './user-registration-form.component.html',
+  styleUrls: ['./user-registration-form.component.scss'],
 })
-export class EmployeeRegistrationFormComponent
-  implements AfterViewInit, OnDestroy
-{
+export class UserRegistrationFormComponent implements AfterViewInit, OnDestroy {
   teams: Team[] = [];
   positions: Position[] = [];
   filtered_positions: Position[] = [];
-  employeeForm: FormGroup;
+  userForm: FormGroup;
   onDestroySubject = new Subject<any>();
 
   get name() {
-    return this.employeeForm.get('name')!;
+    return this.userForm.get('name')!;
   }
   get surname() {
-    return this.employeeForm.get('surname')!;
+    return this.userForm.get('surname')!;
   }
   get email() {
-    return this.employeeForm.get('email')!;
+    return this.userForm.get('email')!;
   }
   get team_id() {
-    return this.employeeForm.get('team_id')!;
+    return this.userForm.get('team_id')!;
   }
   get position_id() {
-    return this.employeeForm.get('position_id')!;
+    return this.userForm.get('position_id')!;
   }
   get phone_number() {
-    return this.employeeForm.get('phone_number')!;
+    return this.userForm.get('phone_number')!;
   }
   constructor(
     private formBuilder: FormBuilder,
     private formHelper: FormGeneralHelperService,
     private route: Router,
     private active: ActivatedRoute,
-    FormManager: FormStateManagerService
+    FormManager: FormStateManagerService,
+    private chdr: ChangeDetectorRef
   ) {
     this.requestData();
-    this.employeeForm = this.buildForm();
-    FormManager.getCachedValue(this.employeeForm, this.onDestroySubject);
-    FormManager.listenToChanges(
-      this.employeeForm,
-      this.onDestroySubject,
-      'user'
-    );
+    this.userForm = this.buildForm();
+    FormManager.getCachedValue(this.userForm, this.onDestroySubject);
+    FormManager.listenToChanges(this.userForm, this.onDestroySubject, 'user');
   }
   ngOnDestroy(): void {
     this.onDestroySubject.next('');
@@ -89,31 +89,35 @@ export class EmployeeRegistrationFormComponent
   requestData() {
     this.formHelper.getTeams().subscribe(
       (teams) => (this.teams = teams.data),
-      (err) => alert('could not get an access to employee teams')
+      (err) => alert('could not get an access to user teams')
     );
     this.formHelper.getPosition().subscribe(
       (positions) => (
         (this.positions = positions.data),
-        (this.filtered_positions = positions.data)
+        (this.filtered_positions = this.team_id.value
+          ? this.filterOptions(this.team_id.value)
+          : positions.data)
       ),
-      (err) => alert('could not get an access to employee positions')
+      (err) => alert('could not get an access to user positions')
     );
   }
 
   ngAfterViewInit() {
     this.team_id.valueChanges.subscribe((team_id) => {
       this.position_id.reset();
-      this.filtered_positions = this.positions.filter(
-        (position) => position.team_id == team_id
-      );
+      this.filtered_positions = this.filterOptions(team_id);
     });
   }
 
   onSubmit(event: Event) {
-    if (this.employeeForm.valid) {
-      this.route.navigate(['../pc'], { relativeTo: this.active });
+    if (this.userForm.valid) {
+      this.route.navigate(['../laptop'], { relativeTo: this.active });
     } else {
       alert('user information form is not complete');
     }
+  }
+
+  filterOptions(team: number) {
+    return this.positions.filter((position) => position.team_id == team);
   }
 }

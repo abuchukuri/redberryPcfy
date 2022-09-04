@@ -20,11 +20,13 @@ import { OverlayControllerService } from '../../services/overlay-controller/over
 import { SuccessPopupComponent } from '../success-popup/success-popup.component';
 
 @Component({
-  selector: 'app-pc-registration-form',
-  templateUrl: './pc-registration-form.component.html',
-  styleUrls: ['./pc-registration-form.component.scss'],
+  selector: 'app-laptop-registration-form',
+  templateUrl: './laptop-registration-form.component.html',
+  styleUrls: ['./laptop-registration-form.component.scss'],
 })
-export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
+export class LaptopRegistrationFormComponent
+  implements AfterViewInit, OnDestroy
+{
   CPUs: CPU[] = [];
   brands: brand[] = [];
   laptopForm: FormGroup;
@@ -79,6 +81,7 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
     });
   }
 
+  //request cpus and brands options
   requestData() {
     this.formHelper.getCPUs().subscribe(
       (CPUs) => (this.CPUs = CPUs.data),
@@ -92,6 +95,7 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {}
 
+  //load image for preview
   loadImage(file: File) {
     (document.getElementById('output') as HTMLImageElement)!.src =
       window.URL.createObjectURL(file);
@@ -117,19 +121,23 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
         ...cache.laptop,
       };
       Object.entries(laptop).forEach(([name, value]) => {
-        if (name !== 'laptop_purchase_date') formData.append(name, '' + value!);
+        if (value != null && name !== 'laptop_image')
+          formData.append(name, '' + value);
       });
       formData.append('laptop_image', fileToUpload, fileToUpload.name);
-      this.laptopsService
-        .create(formData)
-        .subscribe((success: { message: String }) => {
+      this.laptopsService.create(formData).subscribe(
+        (success: { message: String }) => {
           this.overlayService.create(
             SuccessPopupComponent,
             this.overlayService
           );
           this.store.dispatch(new reset());
           localStorage.removeItem('Form_Cache');
-        });
+        },
+        (err: Error) => {
+          alert('sorry, there was an error');
+        }
+      );
     } else {
       alert('user information form is not complete');
     }

@@ -40,10 +40,10 @@
     line-height: 50px;
     text-decoration: none;
     &--active {
-      &.pc-trigger:after {
+      &.laptop-trigger:after {
         width: 263px;
       }
-      &.employee-trigger:after {
+      &.user-trigger:after {
         width: 183px;
       }
       &:after {

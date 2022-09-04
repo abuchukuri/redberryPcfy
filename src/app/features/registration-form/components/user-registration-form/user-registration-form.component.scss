@@ -1,4 +1,4 @@
-.employee-form {
+.user-form {
   padding-top: 26px;
   position: relative;
   padding-bottom: 102px;
@@ -33,7 +33,7 @@ label {
 }
 
 @media only screen and (max-width: 767px) {
-  .employee-form {
+  .user-form {
     padding-bottom: 73px;
     .row {
       & > * {

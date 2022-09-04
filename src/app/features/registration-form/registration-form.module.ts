@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegistrationFormComponent } from './registration-form.component';
-import { PcRegistrationFormComponent } from './components/pc-registration-form/pc-registration-form.component';
-import { EmployeeRegistrationFormComponent } from './components/employee-registration-form/employee-registration-form.component';
+import { LaptopRegistrationFormComponent } from './components/laptop-registration-form/laptop-registration-form.component';
+import { UserRegistrationFormComponent } from './components/user-registration-form/user-registration-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { SuccessPopupComponent } from './components/success-popup/success-popup.component';
@@ -18,13 +18,13 @@ const routes: Routes = [
     path: '',
     component: RegistrationFormComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'employee' },
+      { path: '', pathMatch: 'full', redirectTo: 'user' },
       {
-        path: 'pc',
-        component: PcRegistrationFormComponent,
+        path: 'laptop',
+        component: LaptopRegistrationFormComponent,
         resolve: [FormCheckResolver],
       },
-      { path: 'employee', component: EmployeeRegistrationFormComponent },
+      { path: 'user', component: UserRegistrationFormComponent },
     ],
   },
 ];
@@ -32,8 +32,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     RegistrationFormComponent,
-    PcRegistrationFormComponent,
-    EmployeeRegistrationFormComponent,
+    LaptopRegistrationFormComponent,
+    UserRegistrationFormComponent,
     SuccessPopupComponent,
   ],
   imports: [
@@ -49,6 +49,6 @@ const routes: Routes = [
     FormStateManagerService,
     OverlayControllerService,
   ],
-  exports: [EmployeeRegistrationFormComponent],
+  exports: [UserRegistrationFormComponent],
 })
 export class RegistrationFormModule {}

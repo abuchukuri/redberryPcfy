@@ -1,5 +1,5 @@
 import {
-  employee_Model,
+  user_Model,
   laptop_Model,
   registration_Form_Model,
 } from '../models/form.state.model';
@@ -8,7 +8,7 @@ export class setSegment {
   static readonly type = '[form] set segment';
   constructor(
     public segment: string,
-    public value: employee_Model | laptop_Model,
+    public value: user_Model | laptop_Model,
     public valid: boolean
   ) {}
 }

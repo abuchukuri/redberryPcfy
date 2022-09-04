@@ -30,7 +30,7 @@ export class FormCheckResolver implements Resolve<boolean> {
     }
 
     if (!formState.user_valid) {
-      this.router.navigate(['/Dash/registration-form/employee']);
+      this.router.navigate(['/Dash/registration-form/user']);
       alert('user information form is not complete');
     }
     return of(true);

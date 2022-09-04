@@ -5,12 +5,15 @@ import { LaptopsService } from '../../../../services/laptops/laptops.service';
 import { laptop_details } from '../../models/laptop-details';
 
 @Component({
-  selector: 'app-pc-view',
-  templateUrl: './pc-view.component.html',
-  styleUrls: ['./pc-view.component.scss'],
+  selector: 'app-laptop-view',
+  templateUrl: './laptop-view.component.html',
+  styleUrls: ['./laptop-view.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PcViewComponent implements OnInit {
+export class LaptopViewComponent implements OnInit {
+  //as we fetch cpu, brand, team and position from backend
+  // creating enums for them doesn't seem logical
+  // I'll leave them as id-s for now
   cpu = [
     { field: 'CPU', cell: (element: any) => element.laptop.cpu.name },
     {

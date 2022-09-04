@@ -20,8 +20,8 @@ const routes: Routes = [
       {
         path: 'list',
         loadChildren: () =>
-          import('../app/features/pc-list/pc-list.module').then(
-            (m) => m.PcListModule
+          import('../app/features/laptop-list/laptop-list.module').then(
+            (m) => m.LaptopListModule
           ),
       },
     ],

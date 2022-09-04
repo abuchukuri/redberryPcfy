@@ -1,13 +1,13 @@
 export type registration_Form_Model = {
-  user: employee_Model;
+  user: user_Model;
   laptop: laptop_Model;
   user_valid: null | boolean;
   laptop_valid: null | boolean;
   dirty: null | boolean;
-  [key: string]: null | boolean | laptop_Model | employee_Model;
+  [key: string]: null | boolean | laptop_Model | user_Model;
 };
 
-export interface employee_Model {
+export interface user_Model {
   name: string | null;
   surname: string | null;
   team_id: number | null;
