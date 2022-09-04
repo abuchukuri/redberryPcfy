@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { laptop } from '../../models/laptop.model';
+import { laptop } from '../../features/pc-list/models/laptop.model';
 
 @Injectable({ providedIn: 'root' })
 export class LaptopsService {
@@ -10,7 +10,7 @@ export class LaptopsService {
   token = environment.token;
   constructor(private http: HttpClient) {}
 
-  creat(formData: FormData) {
+  create(formData: FormData) {
     formData.append('token', this.token);
     // laptop.token = this.token;
     return this.http.post(`${this.Api}/laptop/create`, formData).pipe() as any;

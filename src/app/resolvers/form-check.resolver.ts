@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  ActivatedRoute,
   ActivatedRouteSnapshot,
   Resolve,
   Router,
@@ -14,11 +13,12 @@ import { registrationFormState } from '../state/form.state';
   providedIn: 'root',
 })
 export class FormCheckResolver implements Resolve<boolean> {
-  constructor(
-    private store: Store,
-    private router: Router,
-    private active: ActivatedRoute
-  ) {}
+  constructor(private store: Store, private router: Router) {}
+
+  // when navigating to laptop registration form
+  // check store or local storage,
+  // if users form valid continue navigation,
+  // else redirect to user registration form
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -30,7 +30,7 @@ export class FormCheckResolver implements Resolve<boolean> {
     }
 
     if (!formState.user_valid) {
-      this.router.navigate(['/homePage/registration-form/employee']);
+      this.router.navigate(['/Dash/registration-form/employee']);
       alert('user information form is not complete');
     }
     return of(true);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LaptopsService } from './services/laptops/laptops.service';
+import { LaptopsService } from '../../services/laptops/laptops.service';
 
 @Component({
   selector: 'app-pc-list',
@@ -10,7 +10,6 @@ export class PcListComponent implements OnInit {
   laptops: any[] = [];
   constructor(LaptopsService: LaptopsService) {
     LaptopsService.getLaptopList().subscribe((laptops) => {
-      console.log(laptops);
       this.laptops = laptops.data;
     });
   }

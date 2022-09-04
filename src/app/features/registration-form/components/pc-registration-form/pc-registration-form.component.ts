@@ -8,7 +8,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { Subject } from 'rxjs';
-import { LaptopsService } from 'src/app/features/pc-list/services/laptops/laptops.service';
+import { LaptopsService } from 'src/app/services/laptops/laptops.service';
 import { reset } from 'src/app/state/actions/form.state.actions';
 import { registrationFormState } from 'src/app/state/form.state';
 import { registration_Form_Model } from 'src/app/state/models/form.state.model';
@@ -93,8 +93,6 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {}
 
   loadImage(file: File) {
-    console.log(file);
-    console.log(document.getElementById('output'));
     (document.getElementById('output') as HTMLImageElement)!.src =
       window.URL.createObjectURL(file);
   }
@@ -122,11 +120,9 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
         if (name !== 'laptop_purchase_date') formData.append(name, '' + value!);
       });
       formData.append('laptop_image', fileToUpload, fileToUpload.name);
-      console.log(laptop);
       this.laptopsService
-        .creat(formData)
+        .create(formData)
         .subscribe((success: { message: String }) => {
-          console.log(success);
           this.overlayService.create(
             SuccessPopupComponent,
             this.overlayService

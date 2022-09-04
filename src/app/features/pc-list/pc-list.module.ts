@@ -4,7 +4,7 @@ import { PcListComponent } from './pc-list.component';
 import { PcItemComponent } from './components/pc-item/pc-item.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PcViewComponent } from './components/pc-view/pc-view.component';
-import { LaptopsService } from './services/laptops/laptops.service';
+import { LaptopsService } from '../../services/laptops/laptops.service';
 
 const routes: Routes = [
   {

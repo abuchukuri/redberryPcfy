@@ -45,7 +45,6 @@ export class FormStateManagerService {
           }).forEach(([name, value]) => {
             if (value && form.get(name) && name !== 'laptop_image') {
               let control = form.get(name);
-              console.log(name, ' : ', value);
               control!.setValue(value);
               control!.markAsDirty();
             }

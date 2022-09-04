@@ -56,7 +56,6 @@ export class EmployeeRegistrationFormComponent
     );
   }
   ngOnDestroy(): void {
-    console.log('ar yviris');
     this.onDestroySubject.next('');
   }
   buildForm() {

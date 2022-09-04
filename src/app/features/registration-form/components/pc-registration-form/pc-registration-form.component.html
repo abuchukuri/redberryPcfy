@@ -32,11 +32,13 @@
       />
       <img id="output" alt="" />
       <p *ngIf="fileUploader.files![0]" class="output-text">
-        {{ fileUploader.files![0].name }},
-        {{ fileUploader.files![0].size / 1000 }} mb
+        <span>{{ fileUploader.files![0].name }},</span>
+        <span>{{ fileUploader.files![0].size / 1000 }} mb</span>
       </p>
       <button type="button" class="btn btn-primary file-upload-button">
-        ატვირთე
+        <label for="laptop_image">
+          {{ fileUploader.files![0] ? "თავიდან ატვირთე" : "ატვირთე" }}
+        </label>
       </button>
       <div class="file-upload-place-holder"></div>
     </div>

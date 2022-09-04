@@ -39,18 +39,14 @@ $pcfy-theme: mat.define-light-theme(
 /* You can add global styles to this file, and also import other style files */
 :root {
   font-family: "HelveticaNeue";
-  // @TODO
+
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     width: 0;
-
+    height: 0;
     background-color: transparent;
   }
-}
-
-* {
-  box-sizing: border-box;
 }
 
 html,
@@ -61,7 +57,10 @@ body {
 body {
   margin: 0;
   font-family: "HelveticaNeue", sans-serif;
-  background-color: red;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* bootstrap */
@@ -93,11 +92,6 @@ select:focus {
   -webkit-box-shadow: none;
 }
 
-label {
-  height: 21px;
-  margin-bottom: 8px;
-}
-
 :is(.form-control, .custom-select-wrap).ng-invalid.ng-dirty,
 .ng-submitted.ng-invalid .form-control.ng-invalid,
 .ng-submitted.ng-invalid .custom-select-wrap.ng-invalid {
@@ -115,7 +109,8 @@ input.form-control {
   border: 1.8px solid $blue-400;
   border-radius: 8px;
   background-color: unset;
-  padding-left: 14px;
+  padding-left: 15px;
+  padding-top: 2px;
   &:focus {
     background: rgba(43, 75, 242, 0.06);
     border-color: #6499ff;
@@ -145,7 +140,6 @@ input.form-control {
   }
 }
 
-//@TODO
 .form-group-reverse {
   label {
     order: 0;
@@ -164,6 +158,8 @@ input.form-control {
   color: black;
   display: block;
   margin-top: 8px;
+  letter-spacing: -0.015rem;
+  font-size: 0.885em;
 }
 
 .custom-select-wrap {
@@ -184,7 +180,8 @@ input.form-control {
     padding: 0 16px;
   }
   .mat-select-value {
-    font-size: 20px;
+    font-size: 18px;
+    letter-spacing: 0.05rem;
   }
   .mat-select-arrow {
     border: none;
@@ -234,7 +231,7 @@ input.form-control {
 }
 
 .col-md-6 {
-  width: 48%;
+  width: 47.7%;
 }
 
 @media (max-width: 768px) {

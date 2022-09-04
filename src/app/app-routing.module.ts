@@ -6,7 +6,7 @@ import { WelcomePageComponent } from './layout/welcome-page/welcome-page.compone
 const routes: Routes = [
   { path: '', component: WelcomePageComponent, pathMatch: 'full' },
   {
-    path: 'homePage',
+    path: 'Dash',
     component: DashboardComponent,
     children: [
       { path: '', redirectTo: 'registration-form', pathMatch: 'full' },

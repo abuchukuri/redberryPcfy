@@ -1,23 +1,30 @@
-<div class="welcom-page-container">
-  <img class="redberry-logo" src="../../../assets/icons/redberry.svg" alt="" />
-  <img class="welcom-page-image" src="../../../assets/icons/PCfy.svg" alt="" />
+<div class="welcome-page">
   <img
-    class="welcom-page-image-s"
+    class="welcome-page__logo"
+    src="../../../assets/icons/redberry.svg"
+    alt=""
+  />
+  <img
+    class="welcome-page__image--large"
+    src="../../../assets/icons/PCfy.svg"
+    alt=""
+  />
+  <img
+    class="welcome-page__image--small"
     src="../../../assets/icons/PCfy-s.svg"
     alt=""
   />
 
   <button
-    (click)="route.navigate(['/homePage/registration-form'])"
-    class="btn btn-primary welcom-page-button"
+    (click)="route.navigate(['/Dash/registration-form'])"
+    class="btn btn-primary welcome-page__button"
   >
-    <!-- ᲩᲐᲜᲐᲬᲔᲠᲘᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ -->
-    ჩანაწერის დამატება
+    ᲩᲐᲜᲐᲬᲔᲠᲘᲡ ᲓᲐᲛᲐᲢᲔᲑᲐ
   </button>
   <button
-    (click)="route.navigate(['/homePage/list'])"
+    (click)="route.navigate(['/Dash/list'])"
     type="submit"
-    class="btn btn-primary welcom-page-button welcom-page-button-2"
+    class="btn btn-primary welcome-page__button button-2"
   >
     ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ
   </button>

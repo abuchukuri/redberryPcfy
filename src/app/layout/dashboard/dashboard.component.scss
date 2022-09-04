@@ -1,27 +1,33 @@
 @import "../../../assets/system/colors/colors";
 
-.back-button {
-  z-index: 100;
-  width: 53px;
-  height: 53px;
-  position: absolute;
-  left: 70px;
-  top: 53px;
-  border-radius: 50%;
-  border: none;
-  background: $back-button-bg;
-}
-
-.router-wrapper {
-}
-
-.dash-container {
+.dash {
   width: 100%;
   min-height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: $main-bg;
-  // background-color: ;
   position: relative;
+
+  &__back-button {
+    z-index: 100;
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    left: 70px;
+    top: 53px;
+    border-radius: 50%;
+    border: none;
+    background: $back-button-bg;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .dash {
+    &__back-button {
+      background-color: transparent;
+      left: -6px;
+      top: 15px;
+    }
+  }
 }

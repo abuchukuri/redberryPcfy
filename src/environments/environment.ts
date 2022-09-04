@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   pcfyApi: 'https://pcfy.redberryinternship.ge/api',
-  token: 'b39753fc99f5ee6b129d61956acfdae2',
+  token: '242d00fc8adf16de03c080440c6daaec',
 };
 
 /*

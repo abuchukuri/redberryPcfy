@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { LaptopsService } from '../../../../services/laptops/laptops.service';
 import { laptop_details } from '../../models/laptop-details';
-import { LaptopsService } from '../../services/laptops/laptops.service';
 
 @Component({
   selector: 'app-pc-view',
@@ -85,7 +85,6 @@ export class PcViewComponent implements OnInit {
 
   fetchLaptopDetails(id: number) {
     this.laptopsService.getLaptop(id).subscribe((details) => {
-      console.log(details.data);
       this.laptop_details.next(details.data);
     });
   }

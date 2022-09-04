@@ -10,19 +10,19 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { registrationFormState } from './state/form.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+
 @NgModule({
   declarations: [AppComponent, WelcomePageComponent, DashboardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SharedModule,
     NgxsModule.forRoot([registrationFormState], {
       developmentMode: !environment.production,
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    SharedModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
