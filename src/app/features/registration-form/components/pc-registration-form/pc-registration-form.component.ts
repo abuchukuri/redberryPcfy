@@ -1,9 +1,17 @@
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Subject } from 'rxjs';
+import { LaptopsService } from 'src/app/features/pc-list/services/laptops/laptops.service';
+import { reset } from 'src/app/state/actions/form.state.actions';
+import { registrationFormState } from 'src/app/state/form.state';
+import { registration_Form_Model } from 'src/app/state/models/form.state.model';
 import { brand } from '../../models/brand.model';
 import { CPU } from '../../models/cpu.model';
 import { FormGeneralHelperService } from '../../services/form-general-helper/form-general-helper.service';
@@ -22,16 +30,23 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
   laptopForm: FormGroup;
   onDestroySubject = new Subject();
 
+  @ViewChild('fileUploader') fileUploader?: ElementRef;
   constructor(
     private formBuilder: FormBuilder,
     private formHelper: FormGeneralHelperService,
     private overlayService: OverlayControllerService,
-    FormManager: FormStateManagerService
+    FormManager: FormStateManagerService,
+    private laptopsService: LaptopsService,
+    private store: Store
   ) {
     this.requestData();
     this.laptopForm = this.buildForm();
-    FormManager.getCachedValue(this.laptopForm);
-    FormManager.listenToChanges(this.laptopForm, this.onDestroySubject);
+    FormManager.getCachedValue(this.laptopForm, this.onDestroySubject);
+    FormManager.listenToChanges(
+      this.laptopForm,
+      this.onDestroySubject,
+      'laptop'
+    );
   }
   ngOnDestroy(): void {
     this.onDestroySubject.next(true);
@@ -77,19 +92,55 @@ export class PcRegistrationFormComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {}
 
+  loadImage(file: File) {
+    console.log(file);
+    console.log(document.getElementById('output'));
+    (document.getElementById('output') as HTMLImageElement)!.src =
+      window.URL.createObjectURL(file);
+  }
+
   onSubmit(event: Event) {
     if (this.laptopForm.valid) {
       this.onSuccess();
     } else {
-      alert('registration form is not valid, please follow the instructions');
+      alert('laptop information form is not complete');
     }
   }
 
   onSuccess() {
-    this.overlayService.create(SuccessPopupComponent, this.overlayService);
+    if (this.laptopForm.valid) {
+      let cache: registration_Form_Model = this.store.selectSnapshot(
+        registrationFormState
+      );
+      let fileToUpload = this.fileUploader?.nativeElement.files[0];
+      const formData: FormData = new FormData();
+      let laptop = {
+        ...cache.user,
+        ...cache.laptop,
+      };
+      Object.entries(laptop).forEach(([name, value]) => {
+        if (name !== 'laptop_purchase_date') formData.append(name, '' + value!);
+      });
+      formData.append('laptop_image', fileToUpload, fileToUpload.name);
+      console.log(laptop);
+      this.laptopsService
+        .creat(formData)
+        .subscribe((success: { message: String }) => {
+          console.log(success);
+          this.overlayService.create(
+            SuccessPopupComponent,
+            this.overlayService
+          );
+          this.store.dispatch(new reset());
+          localStorage.removeItem('Form_Cache');
+        });
+    } else {
+      alert('user information form is not complete');
+    }
   }
 
   FileDropped(files: FileList, fileUploader: HTMLInputElement) {
     fileUploader.files = files;
+    this.loadImage(files[0]);
   }
 }

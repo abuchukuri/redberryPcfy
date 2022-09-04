@@ -1,5 +1,5 @@
 @import "../../../../../assets/system/colors/colors";
-.pc-item-container {
+.laptop-item {
   width: 563px;
   height: 205px;
   display: grid;
@@ -9,15 +9,65 @@
   background-color: $blue-300;
   border: 1px solid #aed1ea;
   border-radius: 20px;
-  .pc-image {
-    width: 266px;
+  padding: 14px 14px 13px;
+  &__image {
+    width: 265px;
+    height: 176px;
     border-radius: 10px;
   }
-  .pc-information {
-    height: 70%;
+  &__information {
+    margin-left: 27px;
+    height: 119px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    gap: 18px;
+
+    font-family: HelveticaNeue;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  &__name {
+    font-weight: 400;
+  }
+
+  &__user {
+    font-weight: 500;
+    letter-spacing: 0.015rem;
+  }
+  &__link {
+    font-weight: 400;
+    font-size: 16px;
+    color: $blue-700;
+    justify-self: flex-end;
+    margin-top: 23px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .laptop-item {
+    height: 123px;
+    width: 358px;
+    padding: 7px;
+    border-radius: 10px;
+
+    &__image {
+      width: 164px;
+      height: 109px;
+    }
+    &__information {
+      height: 86px;
+      font-size: 14px;
+      margin-left: 8px;
+      gap: 7px;
+    }
+    &__name {
+      font-size: 18px;
+    }
+    &__link {
+      font-size: 14px;
+      margin-top: 5px;
+      text-decoration-skip-ink: none;
+    }
   }
 }

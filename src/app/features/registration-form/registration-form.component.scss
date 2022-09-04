@@ -1,55 +1,62 @@
 @import "../../../assets/system/colors/colors";
-.form-container {
-  width: 100%;
-  height: fit-content;
-  border-radius: 18px;
-  background-color: $white;
-  padding: 68px 174px 44px;
-}
-
-.stepper {
-  height: 157px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 66px;
-  padding-bottom: 27px;
-  a {
+.registration-form {
+  padding-bottom: 200px;
+  position: relative;
+  &__container {
+    width: 1226px;
+    height: fit-content;
+    border-radius: 18px;
+    background-color: $white;
+    padding: 68px 174px 44px;
+    margin: 0 auto;
+  }
+  &__stepper {
+    height: 157px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 66px;
+    padding-bottom: 27px;
+    position: relative;
+  }
+  &__page {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #898989;
+    position: absolute;
+    bottom: 4px;
+  }
+  &__trigger {
+    border: none;
+    background-color: transparent;
+    position: relative;
     color: $black-700;
     font-style: normal;
     font-weight: 700;
     font-size: 21px;
     line-height: 50px;
+    text-decoration: none;
+    &--active {
+      &.pc-trigger:after {
+        width: 263px;
+      }
+      &.employee-trigger:after {
+        width: 183px;
+      }
+      &:after {
+        content: "";
+        display: inline-block;
+        border-bottom: $black-700 2px solid;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   }
-}
-
-.step-trigger {
-  border: none;
-  background-color: transparent;
-  position: relative;
-}
-
-.step-trigger.active {
-  &.pc-trigger:after {
-    width: 263px;
-  }
-  &.employee-trigger:after {
-    width: 183px;
-  }
-  &:after {
-    content: "";
-    display: inline-block;
-    border-bottom: $black-700 2px solid;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-.registration-form-wrap {
-  padding-bottom: 200px;
-  position: relative;
 }
 
 .redberry-logo {
@@ -57,4 +64,49 @@
   bottom: 46px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.small-screen {
+  display: none;
+}
+
+::ng-deep .success-modal__background {
+  background-color: $back-drop;
+}
+
+@media only screen and (max-width: 1280px) {
+  .registration-form {
+    &__container {
+      width: 90%;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .registration-form {
+    &__container {
+      width: 100%;
+      padding: 8px 16px 44px;
+    }
+    &__stepper {
+      height: 79px;
+      margin-bottom: 8px;
+    }
+    &__trigger {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 20px;
+
+      display: none;
+      &--active {
+        display: block;
+        & + .small-screen {
+          display: block;
+        }
+      }
+      &:after {
+        display: none;
+      }
+    }
+  }
 }

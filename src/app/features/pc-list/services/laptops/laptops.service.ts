@@ -4,15 +4,16 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { laptop } from '../../models/laptop.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LaptopsService {
   Api = environment.pcfyApi;
-  token = 'fc753cb7e5739bb133c2e5134696eb47';
+  token = environment.token;
   constructor(private http: HttpClient) {}
 
-  creat(laptop: any) {
-    laptop.token = 'fc753cb7e5739bb133c2e5134696eb47';
-    return this.http.post(`${this.Api}/laptop/create`, laptop).pipe() as any;
+  creat(formData: FormData) {
+    formData.append('token', this.token);
+    // laptop.token = this.token;
+    return this.http.post(`${this.Api}/laptop/create`, formData).pipe() as any;
   }
 
   getLaptopList() {

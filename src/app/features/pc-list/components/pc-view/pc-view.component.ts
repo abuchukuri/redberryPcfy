@@ -43,15 +43,15 @@ export class PcViewComponent implements OnInit {
       cell: (element: any) => element.laptop.state,
     },
     {
-      field: 'შეძენის რიცხვი',
-      cell: (element: any) => element.laptop.purchase_date,
+      field: 'ლეპტოპის ფასი',
+      cell: (element: any) => element.laptop.price + '₾',
     },
   ];
 
   state_2 = [
     {
-      field: 'ლეპტოპის ფასი',
-      cell: (element: any) => element.laptop.price + '₾',
+      field: 'შეძენის რიცხვი',
+      cell: (element: any) => element.laptop.purchase_date,
     },
   ];
 
@@ -67,7 +67,7 @@ export class PcViewComponent implements OnInit {
     },
     { field: 'მეილი', cell: (element: any) => element.user.email },
     {
-      field: 'ტელ.ნომერი',
+      field: 'ტელ. ნომერი',
       cell: (element: any) => element.user.phone_number,
     },
   ];

@@ -1,4 +1,58 @@
 @import "../../../../../assets/system/colors/colors";
 .popup {
   background-color: $white;
+  width: 847px;
+  height: 537px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  padding-top: 43px;
+  gap: 28px;
+  &__message {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__image {
+    width: 237.46px;
+    margin-left: 23px;
+  }
+  &__text {
+    font-weight: 700;
+    font-size: 26px;
+    color: #292929;
+    position: relative;
+    top: -29px;
+  }
+  &__button-1 {
+    width: 297px;
+  }
+  &__button-2 {
+    font-weight: 500;
+    font-size: 20px;
+
+    color: #0089a7;
+    text-decoration: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .popup {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 172px;
+    gap: 38px;
+    &__message {
+      margin-bottom: 100px;
+    }
+
+    &__text {
+      font-size: 22px;
+      top: -13px;
+      width: 170px;
+      text-align: center;
+      letter-spacing: 0.06rem;
+    }
+  }
 }

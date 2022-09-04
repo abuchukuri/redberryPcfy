@@ -1,65 +1,61 @@
-<ng-container *ngIf="laptop_details | async as laptop_details">
-  <p>ᲚᲔᲞᲢᲝᲞᲘᲡ ᲘᲜᲤᲝ</p>
+<div class="laptop" *ngIf="laptop_details | async as laptop_details">
+  <p class="laptop__header header">ᲚᲔᲞᲢᲝᲞᲘᲡ ᲘᲜᲤᲝ</p>
 
-  <div class="row">
-    <img
-      class="col-md-6"
-      [src]="
-        'https://pcfy.redberryinternship.ge/' + laptop_details.laptop.image
-      "
-      alt=""
-    />
-    <div class="col-md-6">
-      <div class="row">
-        <table>
-          <tr *ngFor="let item of user">
-            <th>{{ item.field }}:</th>
-            <td>{{ item.cell(laptop_details) }}</td>
-          </tr>
-        </table>
-      </div>
+  <div class="laptop__content">
+    <div class="laptop__image-wrap laptop__segment">
+      <img
+        class="laptop__image"
+        [src]="
+          'https://pcfy.redberryinternship.ge/' + laptop_details.laptop.image
+        "
+        alt=""
+      />
     </div>
-  </div>
-
-  <hr />
-
-  <div class="row">
-    <div class="col-md-6">
-      <table>
-        <tr *ngFor="let item of laptop">
-          <th>{{ item.field }}:</th>
-          <td>{{ item.cell(laptop_details) }}</td>
+    <div class="laptop__user laptop__segment">
+      <table class="laptop__table">
+        <tr class="laptop__table-row" *ngFor="let item of user">
+          <th class="laptop__table-header">{{ item.field }}:</th>
+          <td class="laptop__table-data">{{ item.cell(laptop_details) }}</td>
         </tr>
       </table>
     </div>
-    <div class="col-md-6">
-      <table>
-        <tr *ngFor="let item of cpu">
-          <th>{{ item.field }}:</th>
-          <td>{{ item.cell(laptop_details) }}</td>
+
+    <hr />
+
+    <div class="laptop__general laptop__segment">
+      <table class="laptop__table">
+        <tr class="laptop__table-row" *ngFor="let item of laptop">
+          <th class="laptop__table-header">{{ item.field }}:</th>
+          <td class="laptop__table-data">{{ item.cell(laptop_details) }}</td>
         </tr>
       </table>
     </div>
-  </div>
 
-  <hr />
-
-  <div class="row">
-    <div class="col-md-6">
-      <table>
-        <tr *ngFor="let item of state">
-          <th>{{ item.field }}:</th>
-          <td>{{ item.cell(laptop_details) }}</td>
+    <div class="laptop__cpu laptop__segment">
+      <table class="laptop__table">
+        <tr class="laptop__table-row" *ngFor="let item of cpu">
+          <th class="laptop__table-header">{{ item.field }}:</th>
+          <td class="laptop__table-data">{{ item.cell(laptop_details) }}</td>
         </tr>
       </table>
     </div>
-    <div class="col-md-6">
-      <table>
-        <tr *ngFor="let item of state_2">
-          <th>{{ item.field }}:</th>
-          <td>{{ item.cell(laptop_details) }}</td>
+    <hr class="hrr" />
+    <div class="laptop__state laptop__segment">
+      <table class="laptop__table">
+        <tr class="laptop__table-row" *ngFor="let item of state">
+          <th class="laptop__table-header">{{ item.field }}:</th>
+          <td class="laptop__table-data">{{ item.cell(laptop_details) }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="laptop__state-2 laptop__segment">
+      <table class="laptop__table">
+        <tr class="laptop__table-row" *ngFor="let item of state_2">
+          <th class="laptop__table-header">{{ item.field }}:</th>
+          <td class="laptop__table-data">{{ item.cell(laptop_details) }}</td>
         </tr>
       </table>
     </div>
   </div>
-</ng-container>
+</div>

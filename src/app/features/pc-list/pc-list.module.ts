@@ -20,7 +20,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [PcListComponent, PcItemComponent, PcViewComponent],
-  providers: [LaptopsService],
   imports: [CommonModule, RouterModule.forChild(routes)],
 })
 export class PcListModule {}

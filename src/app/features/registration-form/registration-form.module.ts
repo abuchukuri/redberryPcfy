@@ -11,6 +11,7 @@ import { OverlayControllerService } from './services/overlay-controller/overlay-
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormGeneralHelperService } from './services/form-general-helper/form-general-helper.service';
 import { FormStateManagerService } from './services/form-state-manager/form-state-manager.service';
+import { FormCheckResolver } from 'src/app/resolvers/form-check.resolver';
 
 const routes: Routes = [
   {
@@ -18,7 +19,11 @@ const routes: Routes = [
     component: RegistrationFormComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'employee' },
-      { path: 'pc', component: PcRegistrationFormComponent },
+      {
+        path: 'pc',
+        component: PcRegistrationFormComponent,
+        resolve: [FormCheckResolver],
+      },
       { path: 'employee', component: EmployeeRegistrationFormComponent },
     ],
   },

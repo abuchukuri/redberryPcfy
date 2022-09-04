@@ -1,12 +1,16 @@
-<div class="pc-item-container">
+<div class="laptop-item">
   <img
-    class="pc-image"
+    class="laptop-item__image"
     [src]="'https://pcfy.redberryinternship.ge/' + laptop.laptop.image"
     alt=""
   />
-  <div class="pc-information">
-    <div class="pc-name">{{ laptop.user.name }} {{ laptop.user.surname }}</div>
-    <div class="pc-type">{{ laptop.laptop.name }}</div>
-    <a [routerLink]="[this.laptop.laptop.id]">მეტის ნახვა</a>
+  <div class="laptop-item__information">
+    <div class="laptop-item__user">
+      {{ laptop.user.name }} {{ laptop.user.surname }}
+    </div>
+    <div class="laptop-item__name">{{ laptop.laptop.name }}</div>
+    <a class="laptop-item__link" [routerLink]="[this.laptop.laptop.id]"
+      >მეტის ნახვა</a
+    >
   </div>
 </div>

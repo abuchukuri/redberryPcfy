@@ -64,11 +64,13 @@ body {
   background-color: red;
 }
 
-/* bootstrap.min.css */
+/* bootstrap */
 .btn-primary {
   background-color: $btn-blue-light;
   border-color: $btn-blue-light;
   height: 60px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .btn-primary:hover {
@@ -96,25 +98,15 @@ label {
   margin-bottom: 8px;
 }
 
-:is(.form-control, .custom-select-wrap).ng-invalid.ng-dirty {
+:is(.form-control, .custom-select-wrap).ng-invalid.ng-dirty,
+.ng-submitted.ng-invalid .form-control.ng-invalid,
+.ng-submitted.ng-invalid .custom-select-wrap.ng-invalid {
   & ~ label,
   & ~ .invalid-feedback {
     color: $input-invalid;
   }
   border-color: $input-invalid;
   background-image: none;
-}
-
-.ng-submitted.ng-invalid {
-  .form-control.ng-invalid,
-  .custom-select-wrap.ng-invalid {
-    & ~ label,
-    & ~ .invalid-feedback {
-      color: $input-invalid;
-    }
-    border-color: $input-invalid;
-    background-image: none;
-  }
 }
 
 input.form-control {
@@ -241,17 +233,27 @@ input.form-control {
   }
 }
 
-a {
-  text-decoration: none;
-  color: $btn-blue-light;
-}
-
 .col-md-6 {
   width: 48%;
 }
 
+@media (max-width: 768px) {
+  .col-md-6 {
+    width: 100%;
+  }
+}
 .row {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 51.2px;
+}
+
+// fonts
+.header {
+  font-family: HelveticaNeue;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 21px;
+  color: $black;
 }

@@ -1,20 +1,23 @@
-<div class="registration-form-wrap">
-  <div class="stepper">
+<div class="registration-form">
+  <div class="registration-form__stepper">
     <a
-      class="step-trigger employee-trigger"
+      class="registration-form__trigger employee-trigger"
       [routerLink]="['employee']"
-      routerLinkActive="active"
+      routerLinkActive="registration-form__trigger--active"
       >თანამშრომლის ინფო</a
     >
+    <div class="registration-form__page small-screen">1/2</div>
+
     <a
-      class="step-trigger pc-trigger"
+      class="registration-form__trigger pc-trigger"
       [routerLink]="['pc']"
-      routerLinkActive="active"
+      routerLinkActive="registration-form__trigger--active"
       >ლეპტოპის მახასიათებლები</a
     >
+    <div class="registration-form__page small-screen">2/2</div>
   </div>
 
-  <div class="form-container">
+  <div class="registration-form__container">
     <router-outlet></router-outlet>
   </div>
 

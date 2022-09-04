@@ -1,8 +1,18 @@
 <div class="popup" cdkDrag>
-  <img src="../../../../../assets/icons/succession.svg" alt="" />
-  <p>ჩანაწერი დამატებულია!</p>
-  <button class="btn btn-primary" (click)="redirect('/homePage/list')">
+  <div class="popup__message">
+    <img
+      class="popup__image"
+      src="../../../../../assets/icons/succession.svg"
+      alt=""
+    />
+    <p class="popup__text">ჩანაწერი დამატებულია!</p>
+  </div>
+
+  <button
+    class="btn btn-primary popup__button-1"
+    (click)="redirect('/homePage/list')"
+  >
     სიაში გადაყვანა
   </button>
-  <a (click)="redirect('/')">მთავარი</a>
+  <a class="popup__button-2" (click)="redirect('/')">მთავარი</a>
 </div>

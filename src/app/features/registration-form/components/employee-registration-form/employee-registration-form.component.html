@@ -1,6 +1,6 @@
 <form
   [formGroup]="employeeForm"
-  class="needs-validation employee-registration-form"
+  class="needs-validation employee-form"
   (submit)="onSubmit($event)"
 >
   <div class="row">
@@ -138,8 +138,11 @@
         formControlName="phone_number"
       />
       <label for="inputMobile">ტელეფონის ნომერი</label>
-      <div class="invalid-feedback feedback">
+      <div class="invalid-feedback feedback large-screen">
         უნდა აკმაყოფილებდეს ქართული მობ-ნომრის ფორმატს
+      </div>
+      <div class="invalid-feedback feedback small-screen">
+        ქართული მობ-ნომრის ფორმატo
       </div>
     </div>
   </div>

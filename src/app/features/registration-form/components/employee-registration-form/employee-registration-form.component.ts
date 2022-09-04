@@ -19,7 +19,7 @@ export class EmployeeRegistrationFormComponent
   positions: Position[] = [];
   filtered_positions: Position[] = [];
   employeeForm: FormGroup;
-  onDestroySubject = new Subject();
+  onDestroySubject = new Subject<any>();
 
   get name() {
     return this.employeeForm.get('name')!;
@@ -48,11 +48,16 @@ export class EmployeeRegistrationFormComponent
   ) {
     this.requestData();
     this.employeeForm = this.buildForm();
-    FormManager.getCachedValue(this.employeeForm);
-    FormManager.listenToChanges(this.employeeForm, this.onDestroySubject);
+    FormManager.getCachedValue(this.employeeForm, this.onDestroySubject);
+    FormManager.listenToChanges(
+      this.employeeForm,
+      this.onDestroySubject,
+      'user'
+    );
   }
   ngOnDestroy(): void {
-    this.onDestroySubject.next(true);
+    console.log('ar yviris');
+    this.onDestroySubject.next('');
   }
   buildForm() {
     return this.formBuilder.group({
@@ -109,7 +114,7 @@ export class EmployeeRegistrationFormComponent
     if (this.employeeForm.valid) {
       this.route.navigate(['../pc'], { relativeTo: this.active });
     } else {
-      // alert('registration form is not valid, please follow the instructions');
+      alert('user information form is not complete');
     }
   }
 }

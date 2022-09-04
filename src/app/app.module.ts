@@ -9,7 +9,7 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { registrationFormState } from './state/form.state';
-
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 @NgModule({
   declarations: [AppComponent, WelcomePageComponent, DashboardComponent],
   imports: [
@@ -19,6 +19,7 @@ import { registrationFormState } from './state/form.state';
     NgxsModule.forRoot([registrationFormState], {
       developmentMode: !environment.production,
     }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
     SharedModule,
   ],
   providers: [],

@@ -5,7 +5,7 @@ label {
   line-height: 21px;
 }
 
-.employee-registration-form {
+.employee-form {
   padding-top: 28px;
   position: relative;
   padding-bottom: 100px;
@@ -16,4 +16,35 @@ label {
   position: absolute;
   bottom: -2px;
   right: 0;
+}
+
+.small-screen {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .employee-form {
+    padding-bottom: 73px;
+  }
+  .row {
+    & > * {
+      margin-bottom: 23px;
+    }
+    margin-bottom: 0;
+    &:nth-child(2) {
+      margin-bottom: 25px;
+    }
+  }
+  .small-screen {
+    display: block;
+  }
+  .large-screen {
+    display: none;
+  }
+  .submit-btn {
+    width: 132px;
+    height: 46px;
+    bottom: 6px;
+    font-size: 18px;
+  }
 }

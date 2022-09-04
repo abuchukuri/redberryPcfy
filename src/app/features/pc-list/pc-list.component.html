@@ -1,4 +1,8 @@
-<p>ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ</p>
-<div *ngIf="laptops">
-  <app-pc-item *ngFor="let item of laptops" [laptop]="item"></app-pc-item>
+<div class="laptop-list">
+  <p class="laptop-list__header header">ᲩᲐᲜᲐᲬᲔᲠᲔᲑᲘᲡ ᲡᲘᲐ</p>
+  <div class="laptop-list__content" *ngIf="laptops">
+    <div class="laptop-list__item" *ngFor="let item of laptops">
+      <app-pc-item [laptop]="item"></app-pc-item>
+    </div>
+  </div>
 </div>

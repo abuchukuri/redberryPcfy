@@ -1,0 +1,138 @@
+@import "../../../../../assets/system/colors/colors";
+
+.laptop {
+  max-width: 1182px;
+  height: 100%;
+  padding-bottom: 130px;
+  &__header {
+    text-align: center;
+    padding-top: 79px;
+    margin-bottom: 73px;
+  }
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__user {
+    flex: 45% !important;
+    display: flex;
+    align-items: center;
+  }
+  &__image-wrap,
+  &__general,
+  &__state {
+    flex: 54%;
+    min-width: 577px;
+  }
+
+  &__user,
+  &__cpu,
+  &__state-2 {
+    flex: 45%;
+    min-width: 500px;
+  }
+  &__image {
+    width: 576px;
+    height: 343px;
+  }
+
+  &__table-header {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 27px;
+    color: $black-500;
+    white-space: nowrap;
+    letter-spacing: -0.01rem;
+  }
+
+  &__table-data {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: $black-400;
+    white-space: nowrap;
+    padding: 14px 0;
+  }
+  &__segment {
+    th {
+      width: 234px;
+    }
+  }
+  &__segment:nth-child(4),
+  &__segment:nth-child(7) {
+    th {
+      width: 300px;
+    }
+  }
+}
+
+hr {
+  flex: 100%;
+  margin-top: 84px;
+  margin-bottom: 46px;
+  &:nth-of-type(2) {
+    margin-top: 61px;
+    margin-bottom: 42px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .laptop {
+    width: 358px;
+    margin: 0 auto;
+    &__header {
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 20px;
+      padding-top: 32px;
+      margin-bottom: 33px;
+    }
+    &__image {
+      width: 358px;
+      height: 191px;
+      margin-bottom: 31px;
+    }
+
+    &__segment,
+    &__segment:nth-child(4),
+    &__segment:nth-child(7) {
+      flex: 100%;
+      display: flex;
+      justify-content: flex-start;
+      min-width: unset;
+      th {
+        width: 187px;
+      }
+    }
+
+    &__table-header {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 0;
+      vertical-align: baseline;
+      overflow: hidden;
+    }
+
+    &__table-data {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 25px;
+      padding: 0;
+      vertical-align: baseline;
+    }
+  }
+
+  hr {
+    margin-top: 34px;
+    margin-bottom: 24px;
+    &:nth-of-type(2) {
+      margin-top: 33px;
+      margin-bottom: 25px;
+    }
+  }
+}

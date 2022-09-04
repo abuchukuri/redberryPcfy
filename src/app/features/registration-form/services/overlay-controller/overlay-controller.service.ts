@@ -8,7 +8,7 @@ export class OverlayControllerService {
 
   create(component: ComponentType<any>, service: OverlayControllerService) {
     let configs = new OverlayConfig({
-      hasBackdrop: false,
+      hasBackdrop: true,
       panelClass: ['success-moda', 'is-active'],
       backdropClass: 'success-modal__background',
       positionStrategy: this.overlay
