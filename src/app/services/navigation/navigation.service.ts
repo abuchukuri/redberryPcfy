@@ -7,13 +7,24 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class NavigationService {
   private history: string[] = [];
+  private historySet = new Set();
 
   constructor(private router: Router, private location: Location) {}
 
   public startSaveHistory(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.history.push(event.urlAfterRedirects);
+        if (!this.historySet.has(event.urlAfterRedirects)) {
+          this.historySet.add(event.urlAfterRedirects);
+          this.history.push(event.urlAfterRedirects);
+        } else {
+          this.history = this.history.slice(
+            0,
+            this.history.indexOf(event.urlAfterRedirects) + 1
+          );
+          this.historySet = new Set(this.history);
+        }
+        console.log(this.historySet);
       }
     });
   }
@@ -23,9 +34,10 @@ export class NavigationService {
   }
 
   public goBack(): void {
-    this.history.pop();
+    let route = this.history.pop();
+    this.historySet.delete(route);
     if (this.history.length > 0) {
-      this.location.back();
+      this.router.navigateByUrl(this.history[this.history.length - 1]);
     } else {
       this.router.navigateByUrl('/');
     }
