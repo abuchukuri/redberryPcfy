@@ -31,12 +31,16 @@ export class FormStateManagerService {
       .selectOnce(registrationFormState)
       .pipe(takeUntil(onDestroy))
       .subscribe((state) => {
+        console.log(state);
         let cached_Data = state;
         if (!cached_Data.dirty && !this.checked_is_storage) {
           this.checked_is_storage = true;
           let cached = localStorage.getItem('Form_Cache');
-          cached_Data = cached ? JSON.parse(cached) : null;
-          if (cached_Data) this.store.dispatch(new setForm(cached_Data));
+          cached = cached ? JSON.parse(cached) : null;
+          if (cached) {
+            cached_Data = cached;
+            this.store.dispatch(new setForm(cached_Data));
+          }
         }
         if (cached_Data.dirty) {
           Object.entries({

@@ -24,7 +24,6 @@ export class NavigationService {
           );
           this.historySet = new Set(this.history);
         }
-        console.log(this.historySet);
       }
     });
   }
