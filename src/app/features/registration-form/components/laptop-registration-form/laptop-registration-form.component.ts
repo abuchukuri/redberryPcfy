@@ -14,7 +14,7 @@ import { registrationFormState } from 'src/app/state/form.state';
 import { registration_Form_Model } from 'src/app/state/models/form.state.model';
 import { brand } from '../../models/brand.model';
 import { CPU } from '../../models/cpu.model';
-import { FormGeneralHelperService } from '../../services/form-general-helper/form-general-helper.service';
+import { FormGeneralHelperService } from '../../../../services/form-general-helper/form-general-helper.service';
 import { FormStateManagerService } from '../../services/form-state-manager/form-state-manager.service';
 import { OverlayControllerService } from '../../services/overlay-controller/overlay-controller.service';
 import { SuccessPopupComponent } from '../success-popup/success-popup.component';
@@ -134,8 +134,8 @@ export class LaptopRegistrationFormComponent
           this.store.dispatch(new reset());
           localStorage.removeItem('Form_Cache');
         },
-        (err: Error) => {
-          alert('sorry, there was an error');
+        (err: any) => {
+          alert(`sorry, there was an error, ${err.error.message}`);
         }
       );
     } else {

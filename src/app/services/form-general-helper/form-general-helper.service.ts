@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { brand } from '../../models/brand.model';
-import { CPU } from '../../models/cpu.model';
-import { Position } from '../../models/position.model';
-import { Team } from '../../models/team.model';
+import { brand } from '../../features/registration-form/models/brand.model';
+import { CPU } from '../../features/registration-form/models/cpu.model';
+import { Position } from '../../features/registration-form/models/position.model';
+import { Team } from '../../features/registration-form/models/team.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class FormGeneralHelperService {
   Api = environment.pcfyApi;
   constructor(private http: HttpClient) {}

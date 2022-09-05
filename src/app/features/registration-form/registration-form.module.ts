@@ -9,7 +9,7 @@ import { SuccessPopupComponent } from './components/success-popup/success-popup.
 import { OverlayModule } from '@angular/cdk/overlay';
 import { OverlayControllerService } from './services/overlay-controller/overlay-controller.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { FormGeneralHelperService } from './services/form-general-helper/form-general-helper.service';
+import { FormGeneralHelperService } from '../../services/form-general-helper/form-general-helper.service';
 import { FormStateManagerService } from './services/form-state-manager/form-state-manager.service';
 import { FormCheckResolver } from 'src/app/resolvers/form-check.resolver';
 
@@ -43,12 +43,7 @@ const routes: Routes = [
     DragDropModule,
     RouterModule.forChild(routes),
   ],
-  providers: [
-    OverlayControllerService,
-    FormGeneralHelperService,
-    FormStateManagerService,
-    OverlayControllerService,
-  ],
+  providers: [OverlayControllerService, FormStateManagerService],
   exports: [UserRegistrationFormComponent],
 })
 export class RegistrationFormModule {}

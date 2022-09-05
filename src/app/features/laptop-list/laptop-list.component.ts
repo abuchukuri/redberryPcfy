@@ -9,9 +9,14 @@ import { LaptopsService } from '../../services/laptops/laptops.service';
 export class LaptopListComponent implements OnInit {
   laptops: any[] = [];
   constructor(LaptopsService: LaptopsService) {
-    LaptopsService.getLaptopList().subscribe((laptops) => {
-      this.laptops = laptops.data;
-    });
+    LaptopsService.getLaptopList().subscribe(
+      (laptops) => {
+        this.laptops = laptops.data;
+      },
+      (err) => {
+        alert('sorry, there was an error');
+      }
+    );
   }
 
   ngOnInit(): void {}

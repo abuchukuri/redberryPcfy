@@ -191,6 +191,22 @@ hr {
   }
 }
 
+#laptop_purchase_date {
+  &.passive::-webkit-datetime-edit {
+    opacity: 0;
+  }
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+  }
+}
+#laptop_purchase_date.passive:before {
+  opacity: 1;
+  content: attr(placeholder) !important;
+  color: #9e9a9a !important;
+}
+
 .form-check-input.ng-invalid.ng-dirty,
 .ng-submitted.ng-invalid .form-check-input.ng-invalid {
   & ~ .group-label label {
@@ -263,7 +279,7 @@ label {
   letter-spacing: 0.02rem;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1024px) {
   .ng-submitted.ng-invalid .file-upload-input.ng-invalid {
     & ~ .file-upload-label {
       &:before {

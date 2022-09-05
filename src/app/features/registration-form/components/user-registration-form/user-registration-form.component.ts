@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Position } from '../../models/position.model';
 import { Team } from '../../models/team.model';
-import { FormGeneralHelperService } from '../../services/form-general-helper/form-general-helper.service';
+import { FormGeneralHelperService } from '../../../../services/form-general-helper/form-general-helper.service';
 import { FormStateManagerService } from '../../services/form-state-manager/form-state-manager.service';
 
 @Component({

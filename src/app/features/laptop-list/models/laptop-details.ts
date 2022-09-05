@@ -1,7 +1,7 @@
 export interface laptop_details {
   laptop: {
     name: string;
-    image: '/storage/images/uLuuQCcXG9MhotvvMbezzXvPrEJFc5m74JfUlWdp.jpg';
+    image: 'string';
     brand_id: string;
     cpu: {
       name: string;

@@ -10,9 +10,15 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { registrationFormState } from './state/form.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { ErrorRouteComponent } from './layout/error-route/error-route.component';
 
 @NgModule({
-  declarations: [AppComponent, WelcomePageComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    WelcomePageComponent,
+    DashboardComponent,
+    ErrorRouteComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -163,11 +163,14 @@
   <div class="row alignt-start laptop-state">
     <div class="form-group form-group-reverse col-md-6">
       <input
-        type="text"
+        #date
+        type="date"
         class="form-control"
         id="laptop_purchase_date"
         formControlName="laptop_purchase_date"
         placeholder="დდ / თთ / წწწწ"
+        [ngClass]="{ passive: date.value == '' }"
+        onfocus="if(this.value!=='')(this.className='form-control active')"
       />
       <label for="laptop_purchase_date">შეძენის რიცხვი (არჩევითი)</label>
     </div>

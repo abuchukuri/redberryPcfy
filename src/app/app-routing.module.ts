@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { ErrorRouteComponent } from './layout/error-route/error-route.component';
 import { WelcomePageComponent } from './layout/welcome-page/welcome-page.component';
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '**', component: ErrorRouteComponent },
 ];
 
 @NgModule({
