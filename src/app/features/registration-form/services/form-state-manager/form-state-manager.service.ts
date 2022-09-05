@@ -31,7 +31,6 @@ export class FormStateManagerService {
       .selectOnce(registrationFormState)
       .pipe(takeUntil(onDestroy))
       .subscribe((state) => {
-        console.log(state);
         let cached_Data = state;
         if (!cached_Data.dirty && !this.checked_is_storage) {
           this.checked_is_storage = true;
